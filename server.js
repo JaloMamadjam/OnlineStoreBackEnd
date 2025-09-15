@@ -12,10 +12,9 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(cors({
-  origin: 'https://online-store-front-499gdj1db-jalomamadjams-projects.vercel.app',
-  methods: ['GET','POST','PUT','DELETE'],
-}));
+app.use(cors({ origin: '*' }));
+
+
 
 app.use(express.json()); //middleware 
 app.use("/api/products", productRoutes);
