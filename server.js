@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import path from 'path';
@@ -15,6 +16,10 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json()); //middleware 
 app.use("/api/products", productRoutes);
 
+app.use(cors({
+  origin: 'https://online-store-front-499gdj1db-jalomamadjams-projects.vercel.app',
+  methods: ['GET','POST','PUT','DELETE'],
+}));
 
 app.listen(PORT, async() => {
     await connectDB();
