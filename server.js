@@ -12,14 +12,15 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-app.use(express.json()); //middleware 
-app.use("/api/products", productRoutes);
-
 app.use(cors({
   origin: 'https://online-store-front-499gdj1db-jalomamadjams-projects.vercel.app',
   methods: ['GET','POST','PUT','DELETE'],
 }));
+
+app.use(express.json()); //middleware 
+app.use("/api/products", productRoutes);
+
+
 
 app.listen(PORT, async() => {
     await connectDB();
